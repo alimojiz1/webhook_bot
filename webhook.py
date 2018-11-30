@@ -23,7 +23,7 @@ def webhook():
     return r
 
 def makeResponse(req):
-    if req.get("result").get("intent") != "CheckWeather":
+    if req.get("queryResult").get("intent") != "CheckWeather":
         return {}
     result = req.get("queryResult")
     parameters = result.get("parameters")
