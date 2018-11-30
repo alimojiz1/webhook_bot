@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-    #print(json.dumps(req, indent=4))
+    print(json.dumps(req, indent=4))
     
     res = makeResponse(req)
     
@@ -23,8 +23,8 @@ def webhook():
     return r
 
 def makeResponse(req):
-    if req.get("queryResult").get("intent") != "CheckWeather":
-        return {}
+    #if req.get("queryResult").get("intent") != "CheckWeather":
+    #    return {}
     result = req.get("queryResult")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
