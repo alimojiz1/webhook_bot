@@ -22,6 +22,7 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
+
 def makeResponse(req):
     #if req.get("queryResult").get("intent") != "CheckWeather":
     #    return {}
@@ -39,11 +40,12 @@ def makeResponse(req):
             condition= weather[i]['weather'][0]['description']
             break
     speech = "The forecast for"+city+ "for "+date+" is "+condition
-    return {
-    "speech": speech,
-    "displayText": speech,
-    "source": "apiai-weather-webhook"
-    }
+    return speech 
+    #{
+    #"speech": speech,
+    #"displayText": speech,
+    #"source": "apiai-weather-webhook"
+    #}
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
