@@ -1,6 +1,7 @@
 import json
 import os
 import requests
+import time
 
 from flask import Flask
 from flask import request
@@ -29,7 +30,8 @@ def makeResponse(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
-    date = parameters.get("date")
+    date_r = parameters.get("date")
+    date = date_r[:date_r.index("T")]
     if city is None:
         return None
     r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=57de430303f8486f100006d5aa44ffdf')
