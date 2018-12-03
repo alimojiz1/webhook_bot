@@ -30,8 +30,8 @@ def makeResponse(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
-    date_r = parameters.get("date")
-    date = date_r[:date_r.index("T")]
+    date = parameters.get("date")
+    #date = date_r[:date_r.index("T")]
     if city is None:
         return None
     r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=57de430303f8486f100006d5aa44ffdf')
@@ -40,7 +40,7 @@ def makeResponse(req):
     condition = ''
     for i in range(0,30):
         if date in weather[i]['dt_txt']:
-            condition= weather[i]['weather']['description']
+            condition= weather[i]['weather'][0]['description']
             break
     response = "The forecast for " +city+ " for "+date+" is "+condition
     return {
