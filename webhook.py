@@ -39,8 +39,12 @@ def makeResponse(req):
         if date in weather[i]['dt_txt']:
             condition= weather[i]['weather'][0]['description']
             break
-    speech = "The forecast for"+city+ "for "+date+" is "+condition
-    return speech 
+    response = "The forecast for"+city+ "for "+date+" is "+condition
+    reply = {
+        "fulfillmentText:" response,
+    } 
+
+    return jsonify(reply)
     #{
     #"speech": speech,
     #"displayText": speech,
