@@ -40,11 +40,12 @@ def makeResponse(req):
             condition= weather[i]['weather'][0]['description']
             break
     response = "The forecast for"+city+ "for "+date+" is "+condition
-    reply = {
-        "fulfillmentText:" response,
-    } 
+    return {
+    "fulfillmentText": response 
+    }
+     
 
-    return jsonify(reply)
+    #return jsonify(reply)
     #{
     #"speech": speech,
     #"displayText": speech,
